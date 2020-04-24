@@ -1,4 +1,4 @@
-package changeme
+package goprojecttmpl
 
 import (
 	"testing"

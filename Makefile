@@ -6,3 +6,6 @@ PATH := "${CURDIR}/bin:$(PATH)"
 
 bin/golangci-lint:
 	script/bindown install $(notdir $@)
+
+bin/shellcheck:
+	script/bindown install $(notdir $@)

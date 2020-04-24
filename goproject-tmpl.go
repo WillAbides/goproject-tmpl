@@ -1,1 +1,1 @@
-package changeme
+package goprojecttmpl
