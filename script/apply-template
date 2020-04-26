@@ -12,20 +12,28 @@ if [ -z "$nwo" ]; then
   nwo=${nwo%".git"}
 fi
 
+sedi() {
+  if [ "Darwin" = "$(uname)" ]; then
+    sed -i '' "$1" "$2"
+  else
+    sed -i "$1" "$2"
+  fi
+}
+
 reponame=$(echo "$nwo" | cut -d "/" -f2)
 downcased_reponame="$(echo "$reponame" | tr '[:upper:]' '[:lower:]')"
 
 template_reponame="goproject-tmpl"
-sed -i '' "s|$template_reponame|$reponame|g" README.md
+sedi "s|$template_reponame|$reponame|g" README.md
 
 template_modulename="github.com/willabides/goproject-tmpl"
 modulename="$(echo "github.com/$nwo" | tr '[:upper:]' '[:lower:]')"
-sed -i '' "s|$template_modulename|$modulename|g" go.mod
+sedi "s|$template_modulename|$modulename|g" go.mod
 
 template_pkgname="goprojecttmpl"
 pkgname="$(echo "$reponame" | tr '[:upper:]' '[:lower:]' | sed 's/-//g')"
-sed -i '' "s|$template_pkgname|$pkgname|g" goproject-tmpl.go
-sed -i '' "s|$template_pkgname|$pkgname|g" goproject-tmpl_test.go
+sedi "s|$template_pkgname|$pkgname|g" goproject-tmpl.go
+sedi "s|$template_pkgname|$pkgname|g" goproject-tmpl_test.go
 
 mv goproject-tmpl.go "$downcased_reponame.go"
 mv goproject-tmpl_test.go "${downcased_reponame}_test.go"
