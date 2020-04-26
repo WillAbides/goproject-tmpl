@@ -18,7 +18,7 @@ downcased_reponame="$(echo "$reponame" | tr '[:upper:]' '[:lower:]')"
 template_reponame="goproject-tmpl"
 sed -i '' "s|$template_reponame|$reponame|g" README.md
 
-template_modulename="github.com/willabides/goproject-tmpl"
+template_modulename="github.com/willabides/goproject-tmpl-fake"
 modulename="$(echo "github.com/$nwo" | tr '[:upper:]' '[:lower:]')"
 sed -i '' "s|$template_modulename|$modulename|g" go.mod
 
