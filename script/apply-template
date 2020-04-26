@@ -38,4 +38,10 @@ sedi "s|$template_pkgname|$pkgname|g" goproject-tmpl_test.go
 mv goproject-tmpl.go "$downcased_reponame.go"
 mv goproject-tmpl_test.go "${downcased_reponame}_test.go"
 rm .github/workflows/applytemplate.yml
+
+if [ -z "$CI" ]; then
+  script/update-repo-settings
+  rm script/update-repo-settings
+fi
+
 rm script/apply-template
