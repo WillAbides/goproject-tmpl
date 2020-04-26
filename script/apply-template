@@ -23,8 +23,8 @@ sedi() {
 reponame=$(echo "$nwo" | cut -d "/" -f2)
 downcased_reponame="$(echo "$reponame" | tr '[:upper:]' '[:lower:]')"
 
-template_reponame="goproject-tmpl"
-sedi "s|$template_reponame|$reponame|g" README.md
+sedi "s|WillAbides/goproject-tmpl|$nwo|g" README.md
+sedi "s|goproject-tmpl|$reponame|g" README.md
 
 template_modulename="github.com/willabides/goproject-tmpl"
 modulename="$(echo "github.com/$nwo" | tr '[:upper:]' '[:lower:]')"
