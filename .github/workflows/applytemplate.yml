@@ -2,7 +2,7 @@ name: applytemplate
 on: [push]
 jobs:
   applytemplate:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
     if: github.repository != 'WillAbides/goproject-tmpl' && github.ref == 'refs/heads/master'
     steps:
       - uses: actions/checkout@v2

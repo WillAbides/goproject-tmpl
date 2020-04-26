@@ -3,10 +3,7 @@ on: [push]
 jobs:
   cibuild:
     name: cibuild
-    strategy:
-      matrix:
-        os: [ubuntu-latest]
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-go@v2
