@@ -2,6 +2,7 @@ name: ci
 on: [push]
 jobs:
   cibuild:
+    name: cibuild
     strategy:
       matrix:
         os: [ubuntu-latest]
