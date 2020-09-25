@@ -29,7 +29,7 @@ curl -s -f \
      "enforce_admins": false,
      "required_pull_request_reviews": null
   }' \
-  "https://api.github.com/repos/$nwo/branches/master/protection" > /dev/null
+  "https://api.github.com/repos/$nwo/branches/main/protection" > /dev/null
 
 curl -f -s \
   -X PATCH \
