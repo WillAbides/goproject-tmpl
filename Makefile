@@ -17,3 +17,6 @@ HANDCRAFTED_REV := 082e94edadf89c33db0afb48889c8419a2cb46a9
 bin/handcrafted:
 	GOBIN=${CURDIR}/bin \
 	go install github.com/willabides/handcrafted@$(HANDCRAFTED_REV)
+
+bin/goproject-tmpl: gobuildcache
+	${GOBUILD} -o $@ ./cmd/goproject-tmpl
