@@ -25,6 +25,7 @@ downcased_reponame="$(echo "$reponame" | tr '[:upper:]' '[:lower:]')"
 
 sedi "s|WillAbides/goproject-tmpl|$nwo|g" README.md
 sedi "s|goproject-tmpl|$reponame|g" README.md
+sedi "s|goproject-tmpl|$reponame|g" cmd/goproject-tmpl/goproject-tmpl.go
 
 template_modulename="github.com/willabides/goproject-tmpl"
 modulename="$(echo "github.com/$nwo" | tr '[:upper:]' '[:lower:]')"
@@ -37,6 +38,9 @@ sedi "s|$template_pkgname|$pkgname|g" goproject-tmpl_test.go
 
 mv goproject-tmpl.go "$downcased_reponame.go"
 mv goproject-tmpl_test.go "${downcased_reponame}_test.go"
+mv cmd/goproject-tmpl/goproject-tmpl.go "cmd/goproject-tmpl/${downcased_reponame}.go"
+mv cmd/goproject-tmpl "cmd/${downcased_reponame}"
+mv script/goproject-tmpl "script/${downcased_reponame}"
 
 script/update-repo-settings
 rm script/update-repo-settings
