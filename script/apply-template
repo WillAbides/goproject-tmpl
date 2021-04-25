@@ -25,6 +25,7 @@ downcased_reponame="$(echo "$reponame" | tr '[:upper:]' '[:lower:]')"
 
 sedi "s|WillAbides/goproject-tmpl|$nwo|g" README.md
 sedi "s|goproject-tmpl|$reponame|g" README.md
+sedi "s|goproject-tmpl|$downcased_reponame|g" .goreleaser.yml
 sedi "s|goproject-tmpl|$downcased_reponame|g" cmd/goproject-tmpl/goproject-tmpl.go
 sedi "s|goproject-tmpl|$downcased_reponame|g" Makefile
 sedi "s|goproject-tmpl|$downcased_reponame|g" script/goproject-tmpl
