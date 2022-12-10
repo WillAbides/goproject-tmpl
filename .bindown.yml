@@ -6,11 +6,11 @@ dependencies:
   gofumpt:
     template: origin#gofumpt
     vars:
-      version: 0.2.0
+      version: 0.4.0
   golangci-lint:
     template: origin#golangci-lint
     vars:
-      version: 1.43.0
+      version: 1.50.1
   shellcheck:
     template: origin#shellcheck
     vars:
@@ -86,10 +86,10 @@ templates:
         url: https://github.com/koalaman/shellcheck/releases/download/v{{.version}}/shellcheck-v{{.version}}.zip
         archive_path: shellcheck.exe
     - matcher:
-        os:
-        - darwin
         arch:
         - arm64
+        os:
+        - darwin
       dependency:
         vars:
           arch: amd64
@@ -104,17 +104,11 @@ templates:
 template_sources:
   origin: https://raw.githubusercontent.com/WillAbides/bindown-templates/master/bindown.yml
 url_checksums:
-  https://github.com/golangci/golangci-lint/releases/download/v1.39.0/golangci-lint-1.39.0-darwin-amd64.tar.gz: 7e9a47ab540aa3e8472fbf8120d28bed3b9d9cf625b955818e8bc69628d7187c
-  https://github.com/golangci/golangci-lint/releases/download/v1.39.0/golangci-lint-1.39.0-linux-amd64.tar.gz: 3a73aa7468087caa62673c8adea99b4e4dff846dc72707222db85f8679b40cbf
-  https://github.com/golangci/golangci-lint/releases/download/v1.43.0/golangci-lint-1.43.0-darwin-amd64.tar.gz: 5971ed73d25767b2b955a694e59c7381d56df46e3681a93e067c601d0d6cffad
-  https://github.com/golangci/golangci-lint/releases/download/v1.43.0/golangci-lint-1.43.0-darwin-arm64.tar.gz: d0c69713b675ee09212273c2136a0d1b30203ddfc1c611a1a4fd5bfa90f9e457
-  https://github.com/golangci/golangci-lint/releases/download/v1.43.0/golangci-lint-1.43.0-linux-amd64.tar.gz: f3515cebec926257da703ba0a2b169e4a322c11dc31a8b4656b50a43e48877f4
-  https://github.com/koalaman/shellcheck/releases/download/v0.7.2/shellcheck-v0.7.2.darwin.x86_64.tar.xz: 969bd7ef668e8167cfbba569fb9f4a0b2fc1c4021f87032b6a0b0e525fb77369
-  https://github.com/koalaman/shellcheck/releases/download/v0.7.2/shellcheck-v0.7.2.linux.x86_64.tar.xz: 70423609f27b504d6c0c47e340f33652aea975e45f312324f2dbf91c95a3b188
+  https://github.com/golangci/golangci-lint/releases/download/v1.50.1/golangci-lint-1.50.1-darwin-amd64.tar.gz: 0f615fb8c364f6e4a213f2ed2ff7aa1fc2b208addf29511e89c03534067bbf57
+  https://github.com/golangci/golangci-lint/releases/download/v1.50.1/golangci-lint-1.50.1-darwin-arm64.tar.gz: 3ca9753d7804b34f9165427fbe339dbea69bd80be8a10e3f02c6037393b2e1c4
+  https://github.com/golangci/golangci-lint/releases/download/v1.50.1/golangci-lint-1.50.1-linux-amd64.tar.gz: 4ba1dc9dbdf05b7bdc6f0e04bdfe6f63aa70576f51817be1b2540bbce017b69a
   https://github.com/koalaman/shellcheck/releases/download/v0.8.0/shellcheck-v0.8.0.darwin.x86_64.tar.xz: e065d4afb2620cc8c1d420a9b3e6243c84ff1a693c1ff0e38f279c8f31e86634
   https://github.com/koalaman/shellcheck/releases/download/v0.8.0/shellcheck-v0.8.0.linux.x86_64.tar.xz: ab6ee1b178f014d1b86d1e24da20d1139656c8b0ed34d2867fbb834dad02bf0a
-  https://github.com/mvdan/gofumpt/releases/download/v0.1.1/gofumpt_v0.1.1_darwin_amd64: 97e4d6d97d70ba6d5177b1fbbbdf7e447bce69b8ccfb0ea64b75699a8393a095
-  https://github.com/mvdan/gofumpt/releases/download/v0.1.1/gofumpt_v0.1.1_linux_amd64: 8884cb7b22d09bc8920748db5756d276ddfdb9e0f9a64edd6185b61a61e860ad
-  https://github.com/mvdan/gofumpt/releases/download/v0.2.0/gofumpt_v0.2.0_darwin_amd64: aa2c54cbe73618b76b0841bb2e48c4b83563833905fabfeffabd1f26ea15ce1f
-  https://github.com/mvdan/gofumpt/releases/download/v0.2.0/gofumpt_v0.2.0_darwin_arm64: fcafeedb2b64402cabdb738e2e5577f21cb1547b6956d2f37abf8d055d907d05
-  https://github.com/mvdan/gofumpt/releases/download/v0.2.0/gofumpt_v0.2.0_linux_amd64: 3112bd66606c2f15ef44443f7f98af6985c8d84d348adad4bd89c6a6519d6eb4
+  https://github.com/mvdan/gofumpt/releases/download/v0.4.0/gofumpt_v0.4.0_darwin_amd64: 3f550baa6d4c071b01e9c68b9308bd2ca3bae6b3b09d203f19ed8626ee0fe487
+  https://github.com/mvdan/gofumpt/releases/download/v0.4.0/gofumpt_v0.4.0_darwin_arm64: 768263452749a3a3cabf412f29f8a14e8bbdc7f6c6471427e977eebc6592ddb8
+  https://github.com/mvdan/gofumpt/releases/download/v0.4.0/gofumpt_v0.4.0_linux_amd64: d3ca535e6b0b230a9c4f05a3ec54e358336b5e7474d239c15514e63a0b2a8041
