@@ -22,20 +22,23 @@ sedi() {
 
 reponame=$(echo "$nwo" | cut -d "/" -f2)
 downcased_reponame="$(echo "$reponame" | tr '[:upper:]' '[:lower:]')"
-
-sedi "s|WillAbides/goproject-tmpl|$nwo|g" README.md
-sedi "s|goproject-tmpl|$reponame|g" README.md
-
 template_modulename="github.com/willabides/goproject-tmpl"
 modulename="$(echo "github.com/$nwo" | tr '[:upper:]' '[:lower:]')"
-sedi "s|$template_modulename|$modulename|g" go.mod
-
 template_pkgname="goprojecttmpl"
 pkgname="$(echo "$reponame" | tr '[:upper:]' '[:lower:]' | sed 's/-//g')"
-sedi "s|$template_pkgname|$pkgname|g" goproject-tmpl.go
-sedi "s|$template_pkgname|$pkgname|g" goproject-tmpl_test.go
 
-mv goproject-tmpl.go "$downcased_reponame.go"
-mv goproject-tmpl_test.go "${downcased_reponame}_test.go"
+mkdir -p cmd/"$reponame"
+for f in $(git ls-files); do
+  sedi "s|WillAbides/goproject-tmpl|$nwo|g" "$f"
+  sedi "s|goproject-tmpl|$reponame|g" "$f"
+  sedi "s|$template_modulename|$modulename|g" "$f"
+  sedi "s|$template_pkgname|$pkgname|g" "$f"
+  new_name="$(echo "$f" | sed "s|goproject-tmpl|$downcased_reponame|g")"
+  if [ "$f" != "$new_name" ]; then
+    mv "$f" "$new_name"
+  fi
+done
 
-rm script/apply-template
+rm -rf cmd/goproject-tmpl script/new-from-template script/apply-template
+
+script/generate
