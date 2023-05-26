@@ -24,6 +24,10 @@ dependencies:
     template: origin#semver-next
     vars:
       version: 0.11.3
+  semver-prev:
+    template: origin#semver-prev
+    vars:
+      version: 0.0.1
   shellcheck:
     template: origin#shellcheck
     vars:
@@ -184,6 +188,32 @@ templates:
     - windows/386
     - windows/amd64
     - windows/arm64
+  origin#semver-prev:
+    homepage: https://github.com/willabides/semver-prev
+    url: https://github.com/WillAbides/semver-prev/releases/download/v{{.version}}/semver-prev_{{.version}}_{{.os}}_{{.arch}}{{.urlSuffix}}
+    archive_path: semver-prev{{.archivePathSuffix}}
+    bin: semver-prev
+    vars:
+      archivePathSuffix: ""
+      urlSuffix: .tar.gz
+    required_vars:
+    - version
+    overrides:
+    - matcher:
+        os:
+        - windows
+      dependency:
+        vars:
+          archivePathSuffix: .exe
+    systems:
+    - darwin/amd64
+    - darwin/arm64
+    - linux/386
+    - linux/amd64
+    - linux/arm64
+    - windows/386
+    - windows/amd64
+    - windows/arm64
   origin#shellcheck:
     url: https://github.com/koalaman/shellcheck/releases/download/v{{.version}}/shellcheck-v{{.version}}.{{.os}}.{{.arch}}.tar.xz
     archive_path: shellcheck-v{{.version}}/shellcheck
@@ -251,6 +281,10 @@ url_checksums:
   https://github.com/WillAbides/semver-next/releases/download/v0.11.3/semver-next_0.11.3_darwin_arm64.tar.gz: 44a42c6c347f3968c8db2cdf1a1ce61ffa3c0db0af5ae7febc21f19a1ff96afb
   https://github.com/WillAbides/semver-next/releases/download/v0.11.3/semver-next_0.11.3_linux_amd64.tar.gz: 35b024a2ace9977672e78979f13e9bc48973c4a8f19ae7517f1796fbb91a6c11
   https://github.com/WillAbides/semver-next/releases/download/v0.11.3/semver-next_0.11.3_windows_amd64.tar.gz: 0a5e3e743daf3e2eb1e8b41f4787472be1791ac9157c40ac2e9ff39c85eb8730
+  https://github.com/WillAbides/semver-prev/releases/download/v0.0.1/semver-prev_0.0.1_darwin_amd64.tar.gz: de2902df5f99e6db91b143199446ccf9c7bdacd37980fca55f71e2da35211d0f
+  https://github.com/WillAbides/semver-prev/releases/download/v0.0.1/semver-prev_0.0.1_darwin_arm64.tar.gz: 367eaccc368bec6119d47cc78d0ad743cc8709dc1900e8f170c5314418c3a14e
+  https://github.com/WillAbides/semver-prev/releases/download/v0.0.1/semver-prev_0.0.1_linux_amd64.tar.gz: 1c1ab5926e9548659bdc1786cf1da9f62f80ae5314c5ccdf71123767e4f4da1d
+  https://github.com/WillAbides/semver-prev/releases/download/v0.0.1/semver-prev_0.0.1_windows_amd64.tar.gz: 31bc3527ad74cdfda9d5868287141f44e72e8fbd1709c4f6af05205f9eb8bb8b
   https://github.com/golangci/golangci-lint/releases/download/v1.51.2/golangci-lint-1.51.2-darwin-amd64.tar.gz: 0549cbaa2df451cf3a2011a9d73a9cb127784d26749d9cd14c9f4818af104d44
   https://github.com/golangci/golangci-lint/releases/download/v1.51.2/golangci-lint-1.51.2-darwin-arm64.tar.gz: 36e69882205a0e42a63ad57ec3015639c11051e03f0beb9cf7949c6451408960
   https://github.com/golangci/golangci-lint/releases/download/v1.51.2/golangci-lint-1.51.2-linux-amd64.tar.gz: 4de479eb9d9bc29da51aec1834e7c255b333723d38dbd56781c68e5dddc6a90b
