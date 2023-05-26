@@ -31,7 +31,7 @@ dependencies:
   semver-next:
     template: origin#semver-next
     vars:
-      version: 0.11.3
+      version: 2.0.0
   semver-prev:
     template: origin#semver-prev
     vars:
@@ -369,10 +369,10 @@ url_checksums:
   https://github.com/WillAbides/handcrafted/releases/download/v0.0.0/handcrafted_0.0.0_darwin_arm64.tar.gz: c03133084f87e064f9801d4b2a9739be755fcee5875382f4da0fc10cd8306dfb
   https://github.com/WillAbides/handcrafted/releases/download/v0.0.0/handcrafted_0.0.0_linux_amd64.tar.gz: 1a7885a9854d2455dce1be3bc19f2d61a61ebdc99e2a98e4969ab1965c2a64ad
   https://github.com/WillAbides/handcrafted/releases/download/v0.0.0/handcrafted_0.0.0_windows_amd64.tar.gz: 5ce8cddc9bdbd19adde3104397d698ecca7eb8ad2ac540cc709a15821f9b2609
-  https://github.com/WillAbides/semver-next/releases/download/v0.11.3/semver-next_0.11.3_darwin_amd64.tar.gz: 4f7fbb6b16600bdbd049250a1389a01e08a1490f4ceb864b78a19be9f4f74e75
-  https://github.com/WillAbides/semver-next/releases/download/v0.11.3/semver-next_0.11.3_darwin_arm64.tar.gz: 44a42c6c347f3968c8db2cdf1a1ce61ffa3c0db0af5ae7febc21f19a1ff96afb
-  https://github.com/WillAbides/semver-next/releases/download/v0.11.3/semver-next_0.11.3_linux_amd64.tar.gz: 35b024a2ace9977672e78979f13e9bc48973c4a8f19ae7517f1796fbb91a6c11
-  https://github.com/WillAbides/semver-next/releases/download/v0.11.3/semver-next_0.11.3_windows_amd64.tar.gz: 0a5e3e743daf3e2eb1e8b41f4787472be1791ac9157c40ac2e9ff39c85eb8730
+  https://github.com/WillAbides/semver-next/releases/download/v2.0.0/semver-next_2.0.0_darwin_amd64.tar.gz: 2bb0e3a6fda58689c7c983c33f131b44298484ea42c95455f711b16e3a93d033
+  https://github.com/WillAbides/semver-next/releases/download/v2.0.0/semver-next_2.0.0_darwin_arm64.tar.gz: d86b2a7e0cb21cd56b9168913994b4470be2c1a0d724d91c85d91aa3e8c63755
+  https://github.com/WillAbides/semver-next/releases/download/v2.0.0/semver-next_2.0.0_linux_amd64.tar.gz: 336beb1eb6ce340a6dfbb61b7f3ffd8af821414112479a38f9b10db03dc7a6ea
+  https://github.com/WillAbides/semver-next/releases/download/v2.0.0/semver-next_2.0.0_windows_amd64.tar.gz: 2991941f5ab181a426789a8c3a33d999086ed21dba8a8ae7690f59b3c2dbb274
   https://github.com/WillAbides/semver-prev/releases/download/v0.0.1/semver-prev_0.0.1_darwin_amd64.tar.gz: de2902df5f99e6db91b143199446ccf9c7bdacd37980fca55f71e2da35211d0f
   https://github.com/WillAbides/semver-prev/releases/download/v0.0.1/semver-prev_0.0.1_darwin_arm64.tar.gz: 367eaccc368bec6119d47cc78d0ad743cc8709dc1900e8f170c5314418c3a14e
   https://github.com/WillAbides/semver-prev/releases/download/v0.0.1/semver-prev_0.0.1_linux_amd64.tar.gz: 1c1ab5926e9548659bdc1786cf1da9f62f80ae5314c5ccdf71123767e4f4da1d
