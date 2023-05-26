@@ -28,6 +28,10 @@ dependencies:
     template: origin#shellcheck
     vars:
       version: 0.9.0
+  shfmt:
+    template: origin#shfmt
+    vars:
+      version: 3.6.0
 templates:
   origin#gofumpt:
     url: https://github.com/mvdan/gofumpt/releases/download/v{{.version}}/gofumpt_v{{.version}}_{{.os}}_{{.arch}}{{.suffix}}
@@ -209,6 +213,33 @@ templates:
     - darwin/arm64
     - linux/amd64
     - windows/amd64
+  origin#shfmt:
+    homepage: https://github.com/mvdan/sh
+    description: A shell parser, formatter, and interpreter with bash support; includes
+      shfmt
+    url: https://github.com/mvdan/sh/releases/download/v{{.version}}/shfmt_v{{.version}}_{{.os}}_{{.arch}}{{.urlSuffix}}
+    archive_path: shfmt_v{{.version}}_{{.os}}_{{.arch}}{{.urlSuffix}}
+    bin: shfmt
+    vars:
+      archivePathSuffix: ""
+      urlSuffix: ""
+    required_vars:
+    - version
+    overrides:
+    - matcher:
+        os:
+        - windows
+      dependency:
+        vars:
+          urlSuffix: .exe
+    systems:
+    - darwin/amd64
+    - darwin/arm64
+    - linux/386
+    - linux/amd64
+    - linux/arm64
+    - windows/386
+    - windows/amd64
 template_sources:
   origin: https://raw.githubusercontent.com/WillAbides/bindown-templates/master/bindown.yml
 url_checksums:
@@ -235,3 +266,7 @@ url_checksums:
   https://github.com/mvdan/gofumpt/releases/download/v0.5.0/gofumpt_v0.5.0_darwin_arm64: f2df95d5fad8498ad8eeb0be8abdb8bb8d05e8130b332cb69751dfd090fabac4
   https://github.com/mvdan/gofumpt/releases/download/v0.5.0/gofumpt_v0.5.0_linux_amd64: 759c6ab56bfbf62cafb35944aef1e0104a117e0aebfe44816fd79ef4b28521e4
   https://github.com/mvdan/gofumpt/releases/download/v0.5.0/gofumpt_v0.5.0_windows_amd64.exe: c9ca0a8a95c2ead0a009a349d5a326e385f5f15a96b084e11c4a7c1cb86b694b
+  https://github.com/mvdan/sh/releases/download/v3.6.0/shfmt_v3.6.0_darwin_amd64: b8c9c025b498e2816b62f0b717f6032e9ab49e725a45b8205f52f66318f17185
+  https://github.com/mvdan/sh/releases/download/v3.6.0/shfmt_v3.6.0_darwin_arm64: 633f242246ee0a866c5f5df25cbf61b6af0d5e143555aca32950059cf13d91e0
+  https://github.com/mvdan/sh/releases/download/v3.6.0/shfmt_v3.6.0_linux_amd64: 5741a02a641de7e56b8da170e71a97e58050d66a3cf485fb268d6a5a8bb74afb
+  https://github.com/mvdan/sh/releases/download/v3.6.0/shfmt_v3.6.0_windows_amd64.exe: 18122d910ba434be366588f37c302c309cde4ca5403f93285254a3cf96839d01

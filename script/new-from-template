@@ -1,0 +1,31 @@
+#!/bin/sh
+
+set -e
+
+CDPATH="" cd -- "$(dirname -- "$0")/.."
+
+if [ $# -ne 2 ]; then
+  echo "usage: $0 <output-dir> <owner/repo>"
+  exit 1
+fi
+
+OUTPUT_DIR="$1"
+NWO="$2"
+
+# err if $OUTPUT_DIR exists and is not empty
+if [ -e "$OUTPUT_DIR" ] && [ -n "$(ls -A "$OUTPUT_DIR")" ]; then
+  echo "error: $OUTPUT_DIR exists"
+  exit 1
+fi
+
+mkdir -p "$OUTPUT_DIR"
+OUTPUT_DIR="$(cd -- "$OUTPUT_DIR" && pwd -P)"
+git ls-files -com --exclude-standard | cpio -pdm "$OUTPUT_DIR"
+
+(
+  cd "$OUTPUT_DIR"
+  git init
+  git add .
+  git commit -m "Initial commit"
+  git remote add origin "git@github.com:$NWO.git"
+)

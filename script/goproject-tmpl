@@ -1,0 +1,9 @@
+#!/bin/sh
+
+set -e
+
+CDPATH="" cd -- "$(dirname -- "$0")/.."
+
+go build -o bin/goproject-tmpl ./cmd/goproject-tmpl
+
+exec bin/goproject-tmpl "$@"
