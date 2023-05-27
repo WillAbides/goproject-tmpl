@@ -1,0 +1,43 @@
+#!/bin/sh
+#/ script/update-repo-settings updates the settings for the GitHub repository to the preferred settings.
+#/ This should only need to be run once per repository, but can be run multiple times to override
+#/ any unwanted changes.
+#/
+#/ This would normally be part of the one-time apply-template script, but it cannot be run
+#/ from GitHub Actions.
+#/
+#/ Settings changed:
+#/ - Projects: disabled
+#/ - Wiki: disabled
+#/ - Rebase merge: disabled
+#/ - Squash merge: disabled
+#/ - Always suggest updating pull request branches: enabled
+#/ - Automatically delete head branches: enabled
+#/ - Allow auto-merge: enabled
+#/ - Branch protection for "main":
+#/   - Require a pull request before merging : enabled
+#/   - Required status checks: "cibuild"
+
+set -e
+
+CDPATH="" cd -- "$(dirname -- "$0")/.."
+
+script/bindown -q install gh
+
+bin/gh repo edit \
+  --enable-projects=false \
+  --enable-wiki=false \
+  --enable-rebase-merge=false \
+  --enable-squash-merge=false \
+  --allow-update-branch=true \
+  --enable-auto-merge=true \
+  --delete-branch-on-merge=true
+
+bin/gh api '/repos/{owner}/{repo}/branches/main/protection' \
+  --silent \
+  -X PUT \
+  -F 'enforce_admins=false' \
+  -F 'restrictions=null' \
+  -F 'required_status_checks[strict]=true' \
+  -F 'required_status_checks[contexts][]=cibuild' \
+  -F 'required_pull_request_reviews[required_approving_review_count]=0'
