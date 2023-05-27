@@ -39,6 +39,6 @@ for f in $(git ls-files); do
   fi
 done
 
-rm -rf cmd/goproject-tmpl script/new-from-template script/apply-template
+rm -f script/new-from-template script/apply-template
 
 script/generate

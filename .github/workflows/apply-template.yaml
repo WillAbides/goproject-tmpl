@@ -1,0 +1,23 @@
+name: apply template
+on: push
+jobs:
+  apply-template:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: git config
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+      - run: script/apply-template
+      - name: git commit
+        run: |
+          git add .
+          git commit -m 'apply template'
+          if [[ $GITHUB_REPOSITORY == 'WillAbides/goproject-tmpl' ]]; then
+              echo not pushing changes to the template repo
+              exit 0
+          fi
+          git push
