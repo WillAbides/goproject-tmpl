@@ -13,6 +13,8 @@ jobs:
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
       - run: script/apply-template
       - name: git commit
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           git add .
           git commit -m 'apply template'
