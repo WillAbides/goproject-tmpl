@@ -1,4 +1,5 @@
 #!/bin/sh
+#/ script/cibuild is run by CI to test this project. It can also be run locally.
 
 set -e
 

@@ -1,4 +1,5 @@
 #!/bin/sh
+#/ script/release creates a new release. It is run by GitHub Actions on push to main.
 
 set -e
 

@@ -1,4 +1,5 @@
 #!/bin/sh
+#/ script/new-from-template is for ad-hoc testing of this template.
 
 set -e
 

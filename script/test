@@ -1,4 +1,5 @@
 #!/bin/sh
+#/ script/test runs tests on the project.
 
 set -e
 

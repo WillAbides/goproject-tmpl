@@ -1,4 +1,5 @@
 #!/bin/sh
+#/ script/generate runs all generators for this repo.
 
 set -e
 
