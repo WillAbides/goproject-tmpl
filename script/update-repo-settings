@@ -22,15 +22,17 @@ set -e
 
 CDPATH="" cd -- "$(dirname -- "$0")/.."
 
-# make sure nothing is staged
-if ! git diff --cached --quiet; then
-  echo "error: cannot run with staged changes" >&2
-  exit 1
-fi
-
-git rm --cached script/update-repo-settings
-git commit -q -m "Remove script/update-repo-settings"
-git push -q
+mkdir -p tmp/update-repo-settings
+git worktree add -q tmp/update-repo-settings
+trap 'git worktree remove -f tmp/update-repo-settings' EXIT
+(
+  cd tmp/update-repo-settings
+  rm script/update-repo-settings
+  script/generate
+  git add .
+  git commit -q -m "rm script/update-repo-settings"
+  git push -q
+)
 
 script/bindown -q install gh
 
