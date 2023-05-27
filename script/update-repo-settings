@@ -53,6 +53,7 @@ bin/gh api '/repos/{owner}/{repo}/branches/main/protection' \
   -F 'restrictions=null' \
   -F 'required_status_checks[strict]=true' \
   -F 'required_status_checks[contexts][]=cibuild' \
+  -F 'required_status_checks[contexts][]=version-labels' \
   -F 'required_pull_request_reviews[required_approving_review_count]=0'
 
 git merge
