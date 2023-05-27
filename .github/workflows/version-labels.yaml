@@ -28,3 +28,4 @@ jobs:
           message: |
             This pull request does not have a release label. See 
             [CONTRIBUTING.md](https://github.com/${{ github.repository }}/blob/main/CONTRIBUTING.md#Releasing).
+          add_comment: true
