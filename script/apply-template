@@ -39,6 +39,6 @@ for f in $(git ls-files); do
   fi
 done
 
-rm -f script/new-from-template script/apply-template
+rm -f script/new-from-template script/apply-template .github/workflows/apply-template.yaml
 
 script/generate
