@@ -77,3 +77,22 @@ Settings changed:
   - Required status checks: "cibuild"
 
 <!--- end script descriptions --->
+
+## Releasing
+
+Releases are automated with GitHub Actions. The release workflow runs on every push to main and determines the version
+to release based on the labels of the PRs that have been merged since the last release. The labels it looks for are:
+
+| Label           | Change Level |
+|-----------------|--------------|
+| breaking        | major        |
+| breaking change | major        |
+| major           | major        |
+| semver:major    | major        |
+| bug             | patch        |
+| enhancement     | minor        |
+| minor           | minor        |
+| semver:minor    | minor        |
+| bug             | patch        |
+| patch           | patch        |
+| semver:patch    | patch        |
