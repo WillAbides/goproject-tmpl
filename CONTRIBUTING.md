@@ -58,8 +58,8 @@ updates CONTRIBUTING.md with script documentation.
 ### update-repo-settings
 
 script/update-repo-settings updates the settings for the GitHub repository to the preferred settings.
-This should only need to be run once per repository, but can be run multiple times to override
-any unwanted changes.
+This is only needed once per repository, so it deletes itself after running (actually it pushes
+the change before updating the repository because the update disallows pushing changes to main).
 
 This would normally be part of the one-time apply-template script, but it cannot be run
 from GitHub Actions.
