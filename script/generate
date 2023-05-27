@@ -1,5 +1,6 @@
 #!/bin/sh
 #/ script/generate runs all generators for this repo.
+#/ `script/generate --check` checks that the generated files are up to date.
 
 set -e
 
@@ -30,5 +31,8 @@ if [ "$1" = "--check" ]; then
 fi
 
 go generate ./...
-[ -f script/generate-readme ] || exit 0
-./script/generate-readme
+go mod tidy
+
+if [ -f script/update-docs ]; then
+  ./script/update-docs
+fi
