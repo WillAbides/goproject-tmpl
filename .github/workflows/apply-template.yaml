@@ -16,15 +16,22 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          # if script/apply-template is missing, this has already run
-          [ -f script/apply-template ] || { echo "script/apply-template not found"; exit 0; }
+          # fetch our branch
+          git fetch origin main
+          
+          # abort if the current commit is no longer the head of main, because this has already run
+          if [ "$(git rev-parse HEAD)" != "$(git rev-parse origin/main)" ]; then
+              echo "not on main"
+              exit 0
+          fi
+          
           script/apply-template
           
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           git add .
           git commit -m 'apply template'
-
+          
           # do not push if this repo is a template
           IS_TEMPLATE="$(gh repo view --json isTemplate --jq '.isTemplate')"
           if [ "$IS_TEMPLATE" = "false" ]; then
