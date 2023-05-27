@@ -1,4 +1,5 @@
 #!/bin/sh
+#/ script/lint runs linters on the project.
 
 set -e
 

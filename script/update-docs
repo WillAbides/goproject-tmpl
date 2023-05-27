@@ -1,0 +1,42 @@
+#!/bin/bash
+#/ script/generate-readme updates README.md with the usage output of script/goproject-tmpl and
+#/ updates CONTRIBUTING.md with script documentation.
+
+set -e
+
+CDPATH="" cd -- "$(dirname -- "$0")/.."
+
+update_file_section() {
+  file="$1"
+  start_comment="$2"
+  end_comment="$3"
+  replacement="$4"
+
+  pattern="${start_comment}*${end_comment}"
+  data="$(cat "$file")"
+  replacement="$start_comment
+$replacement
+$end_comment"
+  echo "${data//$pattern/$replacement}" >"$file"
+}
+
+if [ -f script/goproject-tmpl ]; then
+  USAGE_OUTPUT="
+\`\`\`
+$(COLUMNS=100 script/goproject-tmpl --help)
+\`\`\`
+"
+fi
+
+update_file_section README.md '<!--- start usage output --->' '<!--- end usage output --->' "$USAGE_OUTPUT"
+
+for f in script/*; do
+  [ -f "$f" ] || continue
+  SCRIPT_DESCRIPTIONS="$SCRIPT_DESCRIPTIONS
+### $(basename "$f")
+
+$(grep '^#/' "$f" | cut -c 4-)
+"
+done
+
+update_file_section CONTRIBUTING.md '<!--- start script descriptions --->' '<!--- end script descriptions --->' "$SCRIPT_DESCRIPTIONS"

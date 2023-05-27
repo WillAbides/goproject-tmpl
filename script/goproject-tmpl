@@ -1,4 +1,5 @@
 #!/bin/sh
+#/ script/goproject-tmpl builds and runs the project with the given arguments.
 
 set -e
 

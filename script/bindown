@@ -1,4 +1,5 @@
 #!/bin/sh
+#/ script/bindown runs bindown with the given arguments
 
 set -e
 

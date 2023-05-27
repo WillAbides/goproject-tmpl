@@ -1,4 +1,5 @@
 #!/bin/sh
+#/ script/fmt formats go code and shell scripts.
 
 set -e
 
