@@ -55,4 +55,4 @@ bin/gh api '/repos/{owner}/{repo}/branches/main/protection' \
   -F 'required_status_checks[contexts][]=cibuild' \
   -F 'required_pull_request_reviews[required_approving_review_count]=0'
 
-rm script/update-repo-settings
+git merge
