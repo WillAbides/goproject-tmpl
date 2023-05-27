@@ -16,8 +16,8 @@ jobs:
         run: |
           git add .
           git commit -m 'apply template'
-          if [[ $GITHUB_REPOSITORY == 'WillAbides/goproject-tmpl' ]]; then
-              echo not pushing changes to the template repo
-              exit 0
+          # do not push if this repo is a template
+          IS_TEMPLATE="$(gh repo view --json isTemplate --jq '.isTemplate')"
+          if [ "$IS_TEMPLATE" = "false" ]; then
+            git push
           fi
-          git push
