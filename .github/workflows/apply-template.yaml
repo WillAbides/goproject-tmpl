@@ -3,6 +3,8 @@ on:
   push:
     branches:
       - main
+concurrency:
+  group: apply-template
 jobs:
   apply-template:
     runs-on: ubuntu-22.04
@@ -10,17 +12,19 @@ jobs:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
-      - name: git config
-        run: |
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-      - run: script/apply-template
-      - name: git commit
+      - name: apply template
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
+          # if script/apply-template is missing, this has already run
+          [ -f script/apply-template ] || { echo "script/apply-template not found"; exit 0; }
+          script/apply-template
+          
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           git add .
           git commit -m 'apply template'
+
           # do not push if this repo is a template
           IS_TEMPLATE="$(gh repo view --json isTemplate --jq '.isTemplate')"
           if [ "$IS_TEMPLATE" = "false" ]; then
