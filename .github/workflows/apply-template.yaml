@@ -38,3 +38,11 @@ jobs:
           if [ "$IS_TEMPLATE" = "false" ]; then
             git push
           fi
+          
+          gh repo edit \
+            --enable-projects=false \
+            --enable-wiki=false \
+            --enable-rebase-merge=false \
+            --enable-squash-merge=false \
+            --allow-update-branch=true \
+            --enable-auto-merge=true
