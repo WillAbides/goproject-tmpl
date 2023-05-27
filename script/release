@@ -4,6 +4,11 @@ set -e
 
 CDPATH="" cd -- "$(dirname -- "$0")/.."
 
+if [ -f ".no-release" ]; then {
+  echo "Release disabled by .no-release file"
+  exit 0
+}; fi
+
 [ -n "$GITHUB_TOKEN" ] || {
   echo GITHUB_TOKEN must be set
   exit 1
