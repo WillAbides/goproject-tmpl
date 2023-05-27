@@ -24,6 +24,7 @@ CDPATH="" cd -- "$(dirname -- "$0")/.."
 
 mkdir -p tmp/update-repo-settings
 git worktree add -q tmp/update-repo-settings
+BRANCH="$(git rev-parse --abbrev-ref HEAD)"
 trap 'git worktree remove -f tmp/update-repo-settings' EXIT
 (
   cd tmp/update-repo-settings
@@ -31,7 +32,7 @@ trap 'git worktree remove -f tmp/update-repo-settings' EXIT
   script/generate
   git add .
   git commit -q -m "rm script/update-repo-settings"
-  git push -q
+  git push -q origin "$(git rev-parse --abbrev-ref HEAD):$BRANCH"
 )
 
 script/bindown -q install gh
