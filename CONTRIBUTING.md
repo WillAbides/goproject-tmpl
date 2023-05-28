@@ -52,8 +52,9 @@ script/test runs tests on the project.
 
 ### update-docs
 
-script/generate-readme updates README.md with the usage output of script/goproject-tmpl and
-updates CONTRIBUTING.md with script documentation.
+script/generate-readme updates documentation.
+- For projects with binaries, it updates the usage output in README.md.
+- Adds script descriptions to CONTRIBUTING.md.
 
 ### update-repo-settings
 
