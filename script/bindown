@@ -8,7 +8,7 @@ CDPATH="" cd -- "$(dirname -- "$0")/.."
 mkdir -p bin
 
 [ -f bin/bindown ] || sh -c "$(
-  curl -sfL https://github.com/WillAbides/bindown/releases/download/v4.4.8/bootstrap-bindown.sh
+  curl -sfL https://github.com/WillAbides/bindown/releases/download/v4.5.0/bootstrap-bindown.sh
 )"
 
 exec bin/bindown "$@"
