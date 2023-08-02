@@ -1,8 +1,8 @@
 systems:
-- darwin/amd64
-- darwin/arm64
-- linux/amd64
-- windows/amd64
+  - darwin/amd64
+  - darwin/arm64
+  - linux/amd64
+  - windows/amd64
 dependencies:
   gh:
     template: origin#gh
@@ -54,66 +54,66 @@ templates:
     vars:
       archivePathSuffix: ""
       urlSuffix: .zip
-    required_vars:
-    - version
     overrides:
-    - matcher:
-        os:
-        - windows
-      dependency:
-        archive_path: bin/gh{{.archivePathSuffix}}
-        vars:
-          archivePathSuffix: .exe
-    - matcher:
-        os:
-        - linux
-      dependency:
-        vars:
-          urlSuffix: .tar.gz
-    - matcher:
-        os:
-        - darwin
-        version:
-        - < 2.28.0
-      dependency:
-        vars:
-          urlSuffix: .tar.gz
+      - matcher:
+          os:
+            - windows
+        dependency:
+          archive_path: bin/gh{{.archivePathSuffix}}
+          vars:
+            archivePathSuffix: .exe
+      - matcher:
+          os:
+            - linux
+        dependency:
+          vars:
+            urlSuffix: .tar.gz
+      - matcher:
+          os:
+            - darwin
+          version:
+            - < 2.28.0
+        dependency:
+          vars:
+            urlSuffix: .tar.gz
     substitutions:
       os:
         darwin: macOS
     systems:
-    - darwin/amd64
-    - darwin/arm64
-    - linux/386
-    - linux/amd64
-    - linux/arm64
-    - windows/386
-    - windows/amd64
-    - windows/arm64
+      - darwin/amd64
+      - darwin/arm64
+      - linux/386
+      - linux/amd64
+      - linux/arm64
+      - windows/386
+      - windows/amd64
+      - windows/arm64
+    required_vars:
+      - version
   origin#gofumpt:
     url: https://github.com/mvdan/gofumpt/releases/download/v{{.version}}/gofumpt_v{{.version}}_{{.os}}_{{.arch}}{{.suffix}}
     archive_path: gofumpt_v{{.version}}_{{.os}}_{{.arch}}{{.suffix}}
     bin: gofumpt{{.suffix}}
     vars:
       suffix: ""
-    required_vars:
-    - version
     overrides:
-    - matcher:
-        os:
-        - windows
-      dependency:
-        vars:
-          suffix: .exe
+      - matcher:
+          os:
+            - windows
+        dependency:
+          vars:
+            suffix: .exe
     systems:
-    - darwin/amd64
-    - darwin/arm64
-    - linux/386
-    - linux/amd64
-    - linux/arm
-    - linux/arm64
-    - windows/386
-    - windows/amd64
+      - darwin/amd64
+      - darwin/arm64
+      - linux/386
+      - linux/amd64
+      - linux/arm
+      - linux/arm64
+      - windows/386
+      - windows/amd64
+    required_vars:
+      - version
   origin#golangci-lint:
     url: https://github.com/golangci/golangci-lint/releases/download/v{{.version}}/golangci-lint-{{.version}}-{{.os}}-{{.arch}}{{.urlsuffix}}
     archive_path: golangci-lint-{{.version}}-{{.os}}-{{.arch}}/golangci-lint{{.archivepathsuffix}}
@@ -122,30 +122,30 @@ templates:
     vars:
       archivepathsuffix: ""
       urlsuffix: .tar.gz
-    required_vars:
-    - version
     overrides:
-    - matcher:
-        os:
-        - windows
-      dependency:
-        vars:
-          archivepathsuffix: .exe
-          urlsuffix: .zip
+      - matcher:
+          os:
+            - windows
+        dependency:
+          vars:
+            archivepathsuffix: .exe
+            urlsuffix: .zip
     systems:
-    - darwin/amd64
-    - darwin/arm64
-    - linux/386
-    - linux/amd64
-    - linux/arm64
-    - windows/386
-    - windows/amd64
-    - freebsd/386
-    - freebsd/amd64
-    - linux/mips64
-    - linux/mips64le
-    - linux/s390x
-    - linux/ppc64le
+      - darwin/amd64
+      - darwin/arm64
+      - linux/386
+      - linux/amd64
+      - linux/arm64
+      - windows/386
+      - windows/amd64
+      - freebsd/386
+      - freebsd/amd64
+      - linux/mips64
+      - linux/mips64le
+      - linux/s390x
+      - linux/ppc64le
+    required_vars:
+      - version
   origin#goreleaser:
     homepage: https://github.com/goreleaser/goreleaser
     description: Deliver Go binaries as fast and easily as possible
@@ -155,22 +155,20 @@ templates:
     vars:
       archivePathSuffix: ""
       urlSuffix: .tar.gz
-    required_vars:
-    - version
     overrides:
-    - matcher:
-        os:
-        - windows
-      dependency:
-        vars:
-          archivePathSuffix: .exe
-          urlSuffix: .zip
-        substitutions:
-          arch:
-            "386": i386
-            amd64: x86_64
+      - matcher:
           os:
-            windows: Windows
+            - windows
+        dependency:
+          vars:
+            archivePathSuffix: .exe
+            urlSuffix: .zip
+          substitutions:
+            arch:
+              "386": i386
+              amd64: x86_64
+            os:
+              windows: Windows
     substitutions:
       arch:
         "386": i386
@@ -179,15 +177,17 @@ templates:
         darwin: Darwin
         linux: Linux
     systems:
-    - darwin/amd64
-    - darwin/arm64
-    - linux/386
-    - linux/amd64
-    - linux/arm64
-    - linux/ppc64
-    - windows/386
-    - windows/amd64
-    - windows/arm64
+      - darwin/amd64
+      - darwin/arm64
+      - linux/386
+      - linux/amd64
+      - linux/arm64
+      - linux/ppc64
+      - windows/386
+      - windows/amd64
+      - windows/arm64
+    required_vars:
+      - version
   origin#handcrafted:
     homepage: https://github.com/willabides/handcrafted
     description: lists non-generated go files in a package
@@ -197,24 +197,24 @@ templates:
     vars:
       archivePathSuffix: ""
       urlSuffix: .tar.gz
-    required_vars:
-    - version
     overrides:
-    - matcher:
-        os:
-        - windows
-      dependency:
-        vars:
-          archivePathSuffix: .exe
+      - matcher:
+          os:
+            - windows
+        dependency:
+          vars:
+            archivePathSuffix: .exe
     systems:
-    - darwin/amd64
-    - darwin/arm64
-    - linux/386
-    - linux/amd64
-    - linux/arm64
-    - windows/386
-    - windows/amd64
-    - windows/arm64
+      - darwin/amd64
+      - darwin/arm64
+      - linux/386
+      - linux/amd64
+      - linux/arm64
+      - windows/386
+      - windows/amd64
+      - windows/arm64
+    required_vars:
+      - version
   origin#jq:
     homepage: https://github.com/stedolan/jq
     description: Command-line JSON processor
@@ -223,24 +223,22 @@ templates:
     bin: jq
     vars:
       extension: ""
-    required_vars:
-    - version
     overrides:
-    - matcher:
-        arch:
-        - amd64
-        - arm64
-        os:
-        - darwin
-      dependency:
-        url: https://github.com/stedolan/jq/releases/download/jq-1.6/jq-osx-amd64
-        archive_path: jq-osx-amd64
-    - matcher:
-        os:
-        - windows
-      dependency:
-        vars:
-          extension: .exe
+      - matcher:
+          arch:
+            - amd64
+            - arm64
+          os:
+            - darwin
+        dependency:
+          url: https://github.com/stedolan/jq/releases/download/jq-1.6/jq-osx-amd64
+          archive_path: jq-osx-amd64
+      - matcher:
+          os:
+            - windows
+        dependency:
+          vars:
+            extension: .exe
     substitutions:
       arch:
         "386": "32"
@@ -248,12 +246,14 @@ templates:
       os:
         windows: win
     systems:
-    - linux/386
-    - linux/amd64
-    - darwin/amd64
-    - darwin/arm64
-    - windows/386
-    - windows/amd64
+      - linux/386
+      - linux/amd64
+      - darwin/amd64
+      - darwin/arm64
+      - windows/386
+      - windows/amd64
+    required_vars:
+      - version
   origin#semver-next:
     homepage: https://github.com/WillAbides/semver-next
     url: https://github.com/WillAbides/semver-next/releases/download/v{{.version}}/semver-next_{{.version}}_{{.os}}_{{.arch}}{{.urlSuffix}}
@@ -262,24 +262,24 @@ templates:
     vars:
       archivePathSuffix: ""
       urlSuffix: .tar.gz
-    required_vars:
-    - version
     overrides:
-    - matcher:
-        os:
-        - windows
-      dependency:
-        vars:
-          archivePathSuffix: .exe
+      - matcher:
+          os:
+            - windows
+        dependency:
+          vars:
+            archivePathSuffix: .exe
     systems:
-    - darwin/amd64
-    - darwin/arm64
-    - linux/386
-    - linux/amd64
-    - linux/arm64
-    - windows/386
-    - windows/amd64
-    - windows/arm64
+      - darwin/amd64
+      - darwin/arm64
+      - linux/386
+      - linux/amd64
+      - linux/arm64
+      - windows/386
+      - windows/amd64
+      - windows/arm64
+    required_vars:
+      - version
   origin#semver-prev:
     homepage: https://github.com/willabides/semver-prev
     url: https://github.com/WillAbides/semver-prev/releases/download/v{{.version}}/semver-prev_{{.version}}_{{.os}}_{{.arch}}{{.urlSuffix}}
@@ -288,80 +288,79 @@ templates:
     vars:
       archivePathSuffix: ""
       urlSuffix: .tar.gz
-    required_vars:
-    - version
     overrides:
-    - matcher:
-        os:
-        - windows
-      dependency:
-        vars:
-          archivePathSuffix: .exe
+      - matcher:
+          os:
+            - windows
+        dependency:
+          vars:
+            archivePathSuffix: .exe
     systems:
-    - darwin/amd64
-    - darwin/arm64
-    - linux/386
-    - linux/amd64
-    - linux/arm64
-    - windows/386
-    - windows/amd64
-    - windows/arm64
+      - darwin/amd64
+      - darwin/arm64
+      - linux/386
+      - linux/amd64
+      - linux/arm64
+      - windows/386
+      - windows/amd64
+      - windows/arm64
+    required_vars:
+      - version
   origin#shellcheck:
     url: https://github.com/koalaman/shellcheck/releases/download/v{{.version}}/shellcheck-v{{.version}}.{{.os}}.{{.arch}}.tar.xz
     archive_path: shellcheck-v{{.version}}/shellcheck
     bin: shellcheck
-    required_vars:
-    - version
     overrides:
-    - matcher:
-        os:
-        - windows
-      dependency:
-        url: https://github.com/koalaman/shellcheck/releases/download/v{{.version}}/shellcheck-v{{.version}}.zip
-        archive_path: shellcheck.exe
-    - matcher:
-        arch:
-        - arm64
-        os:
-        - darwin
-      dependency:
-        vars:
-          arch: amd64
+      - matcher:
+          os:
+            - windows
+        dependency:
+          url: https://github.com/koalaman/shellcheck/releases/download/v{{.version}}/shellcheck-v{{.version}}.zip
+          archive_path: shellcheck.exe
+      - matcher:
+          arch:
+            - arm64
+          os:
+            - darwin
+        dependency:
+          vars:
+            arch: amd64
     substitutions:
       arch:
         amd64: x86_64
     systems:
-    - darwin/amd64
-    - darwin/arm64
-    - linux/amd64
-    - windows/amd64
+      - darwin/amd64
+      - darwin/arm64
+      - linux/amd64
+      - windows/amd64
+    required_vars:
+      - version
   origin#shfmt:
     homepage: https://github.com/mvdan/sh
-    description: A shell parser, formatter, and interpreter with bash support; includes
-      shfmt
+    description: A shell parser, formatter, and interpreter with bash support; includes shfmt
     url: https://github.com/mvdan/sh/releases/download/v{{.version}}/shfmt_v{{.version}}_{{.os}}_{{.arch}}{{.urlSuffix}}
     archive_path: shfmt_v{{.version}}_{{.os}}_{{.arch}}{{.urlSuffix}}
     bin: shfmt
     vars:
       archivePathSuffix: ""
       urlSuffix: ""
-    required_vars:
-    - version
     overrides:
-    - matcher:
-        os:
-        - windows
-      dependency:
-        vars:
-          urlSuffix: .exe
+      - matcher:
+          os:
+            - windows
+        dependency:
+          vars:
+            urlSuffix: .exe
     systems:
-    - darwin/amd64
-    - darwin/arm64
-    - linux/386
-    - linux/amd64
-    - linux/arm64
-    - windows/386
-    - windows/amd64
+      - darwin/amd64
+      - darwin/arm64
+      - linux/386
+      - linux/amd64
+      - linux/arm64
+      - windows/386
+      - windows/amd64
+    required_vars:
+      - version
 template_sources:
   origin: https://raw.githubusercontent.com/WillAbides/bindown-templates/master/bindown.yml
 url_checksums:
