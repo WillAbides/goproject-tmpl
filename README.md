@@ -11,4 +11,6 @@ Flags:
       --version    Output the goproject-tmpl version and exit.
 ```
 
+abc
+
 <!--- end usage output --->
