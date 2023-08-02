@@ -5,10 +5,7 @@ on:
       - main
   workflow_dispatch:
   pull_request:
-    types:
-      - synchronize
-      - opened
-      - reopened
+    types: [ synchronize, opened, reopened, labeled, unlabeled ]
 jobs:
   cibuild:
     name: cibuild
@@ -28,16 +25,34 @@ jobs:
             ${{ steps.setup-go.outputs.GOMODCACHE }}
           key: ${{ runner.os }}-go-${{ hashFiles('go.*', '.github/workflows/ci.yaml', 'script/*', '.bindown.yaml', '.goreleaser.yaml') }}
           restore-keys: ${{ runner.os }}-go-
-      - name: script/cibuild
+      - name: git config
         run: |
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          script/cibuild
+          git config --local user.name '${{ github.actor }}'
+          git config --local user.email '${{ github.actor }}@users.noreply.github.com'
+      - name: script/cibuild
+        run: script/cibuild
+      - uses: WillAbides/release-train@v3.3.0
+        with:
+          # set create-release: true when ready to start releasing
+          create-release: false
+          release-refs: main
+          pre-tag-hook: script/release-hook
 
-      # release on pushes to main
-      - if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+      # This can be deleted if this repo isn't going to publish a binary
+      - name: add bindown template
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: script/release
-
-
+          RELEASE_TAG: ${{ steps.release-train.outputs.release-tag }}
+          GH_TOKEN: ${{ github.token }}
+        if: steps.release-train.outputs.created-release == 'true' && hashFiles('.goreleaser.yaml') != ''
+        run: |
+          #!/bin/sh
+          set -e
+          script/bindown -q install gh
+          CONFIG_FILE="$(pwd)/tmp/add-tmpl/bindown.yaml"
+          mkdir -p "$(dirname "$CONFIG_FILE")"
+          echo '{}' > "$CONFIG_FILE"
+          yes '' | script/bindown dependency add-by-github-release \
+            "$GITHUB_REPOSITORY" \
+            --configfile "$CONFIG_FILE" \
+            --experimental
+          bin/gh release upload "$RELEASE_TAG" "$CONFIG_FILE"

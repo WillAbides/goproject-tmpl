@@ -1,5 +1,17 @@
 # Contributing to goproject-tmpl
 
+Your contributions are welcome here. Feel free to open issues and pull requests.
+If you have a non-trivial change, you may want to open an issue before spending
+much time coding, so we can discuss whether the change will be a good fit for
+goproject-tmpl. But don't let that stop you from coding. Just be aware that
+while all changes are welcome, not all will be merged.
+
+## Releasing
+
+Releases are automated
+with [release-train](https://github.com/WillAbides/release-train). All PRs must
+have a release label. See the release-train readme for more details.
+
 ## Scripts
 
 goproject-tmpl uses a number of scripts to automate common tasks. They are found in the
@@ -42,9 +54,9 @@ script/lint runs linters on the project.
 
 script/new-from-template is for ad-hoc testing of this template.
 
-### release
+### release-hook
 
-script/release creates a new release. It is run by GitHub Actions on push to main.
+script/release-hook is run by release-train as pre-tag-hook
 
 ### test
 
@@ -78,22 +90,3 @@ Settings changed:
   - Required status checks: "cibuild"
 
 <!--- end script descriptions --->
-
-## Releasing
-
-Releases are automated with GitHub Actions. The release workflow runs on every push to main and determines the version
-to release based on the labels of the PRs that have been merged since the last release. The labels it looks for are:
-
-| Label           | Change Level |
-|-----------------|--------------|
-| breaking        | major        |
-| breaking change | major        |
-| major           | major        |
-| semver:major    | major        |
-| bug             | patch        |
-| enhancement     | minor        |
-| minor           | minor        |
-| semver:minor    | minor        |
-| bug             | patch        |
-| patch           | patch        |
-| semver:patch    | patch        |
