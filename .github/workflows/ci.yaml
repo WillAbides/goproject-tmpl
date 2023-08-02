@@ -10,6 +10,8 @@ jobs:
   cibuild:
     name: cibuild
     runs-on: ubuntu-22.04
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v3
         with:
@@ -32,6 +34,7 @@ jobs:
       - name: script/cibuild
         run: script/cibuild
       - uses: WillAbides/release-train@v3.3.0
+        id: release-train
         with:
           # set create-release: true when ready to start releasing
           create-release: false
@@ -43,6 +46,7 @@ jobs:
         env:
           RELEASE_TAG: ${{ steps.release-train.outputs.release-tag }}
           GH_TOKEN: ${{ github.token }}
+          GITHUB_TOKEN: ${{ github.token }}
         if: steps.release-train.outputs.created-release == 'true' && hashFiles('.goreleaser.yaml') != ''
         run: |
           #!/bin/sh
