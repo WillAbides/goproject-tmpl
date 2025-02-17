@@ -18,7 +18,7 @@ update_file_section() {
   replacement="$start_comment
 $replacement
 $end_comment"
-  echo "${data//$pattern/$replacement}" >"$file"
+  echo "${data//$pattern/$replacement}" > "$file"
 }
 
 if [ -f script/goproject-tmpl ]; then

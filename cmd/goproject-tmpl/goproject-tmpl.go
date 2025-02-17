@@ -26,5 +26,6 @@ func main() {
 		kong.Description(description),
 	)
 
-	fmt.Fprintln(k.Stdout, "hello, world")
+	//nolint:errcheck // stdout
+	_, _ = fmt.Fprintln(k.Stdout, "hello, world")
 }
