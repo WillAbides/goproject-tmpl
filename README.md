@@ -12,7 +12,7 @@ bindown dependency add goproject-tmpl --source goproject-tmpl -y
 <!--- start usage output --->
 
 ```
-Usage: goproject-tmpl
+Usage: goproject-tmpl [flags]
 
 Flags:
   -h, --help       Show context-sensitive help.
