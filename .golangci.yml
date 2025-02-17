@@ -1,5 +1,5 @@
 # configure golangci-lint
-# see https://github.com/golangci/golangci-lint/blob/master/.golangci.example.yml
+# see https://github.com/golangci/golangci-lint/blob/master/.golangci.reference.yml
 issues:
   exclude-use-default: false
   exclude-rules:
@@ -12,28 +12,24 @@ linters:
   enable:
     - gosec
     - unconvert
-    - gocyclo
-    - goconst
     - goimports
     - gocritic
     - gofumpt
     - revive
+    - errcheck
 linters-settings:
   gocritic:
     enabled-tags:
       - style
       - diagnostic
       - performance
+
   errcheck:
     # report about assignment of errors to blank identifier: `num, _ := strconv.Atoi(numStr)`;
     # default is false: such cases aren't reported by default.
     check-blank: true
   govet:
-    # report about shadowed variables
-    check-shadowing: true
-  maligned:
-    # print struct with more effective memory layout or not, false by default
-    suggest-new: true
+    enable-all: true
   revive:
     rules:
       - name: package-comments
