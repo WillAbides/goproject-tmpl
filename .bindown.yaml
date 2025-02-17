@@ -19,7 +19,7 @@ dependencies:
   goreleaser:
     template: origin#goreleaser
     vars:
-      version: 1.18.2
+      version: 2.7.0
   handcrafted:
     template: origin#handcrafted
     vars:
@@ -316,10 +316,22 @@ url_checksums:
   https://github.com/golangci/golangci-lint/releases/download/v1.64.5/golangci-lint-1.64.5-darwin-arm64.tar.gz: 8c4f11ef3a22d610dd5836a09c98e944b405624f932f20c7e72ae78abc552311
   https://github.com/golangci/golangci-lint/releases/download/v1.64.5/golangci-lint-1.64.5-linux-amd64.tar.gz: e6bd399a0479c5fd846dcf9f3990d20448b4f0d1e5027d82348eab9f80f7ac71
   https://github.com/golangci/golangci-lint/releases/download/v1.64.5/golangci-lint-1.64.5-windows-amd64.zip: 8b74a5ab4853ed676be1fe8582bbbb58560eafe432ce7593d6f36d67f3e17ffc
-  https://github.com/goreleaser/goreleaser/releases/download/v1.18.2/goreleaser_Darwin_arm64.tar.gz: 7eec9f4d0b86b2c9c9f6af1770a11315998bd4d4617633b0a73eeb036e97393e
-  https://github.com/goreleaser/goreleaser/releases/download/v1.18.2/goreleaser_Darwin_x86_64.tar.gz: 95338eed333347152e23837b68a8c6ce0c62b9f5abb68bd5b4b08178766400b9
-  https://github.com/goreleaser/goreleaser/releases/download/v1.18.2/goreleaser_Linux_x86_64.tar.gz: 811e0c63e347f78f3c8612a19ca8eeb564eb45f0265ce3f38aec39c8fdbcfa10
-  https://github.com/goreleaser/goreleaser/releases/download/v1.18.2/goreleaser_Windows_x86_64.zip: 4b67f9a0159dc4f6a19fdea46eda506d58efe9e9d01aebc6ee39c9e9c14f9715
+  https://github.com/goreleaser/goreleaser/releases/download/v1.26.2/goreleaser_Darwin_arm64.tar.gz: fc07a03bab8d71b60a9f52c9c54e89cdab8e84fac2652a358abd0a05192bae2a
+  https://github.com/goreleaser/goreleaser/releases/download/v1.26.2/goreleaser_Darwin_x86_64.tar.gz: 855a9c02d0e6a1590da302cb4e4648f1cec385fe896987e89dd1a661e1df9003
+  https://github.com/goreleaser/goreleaser/releases/download/v1.26.2/goreleaser_Linux_x86_64.tar.gz: cfbdf12e3ea20e4c3a209d07311f43c2e0baf20d5cce09bcdc232567e0f34307
+  https://github.com/goreleaser/goreleaser/releases/download/v1.26.2/goreleaser_Windows_x86_64.zip: ed95a757e83ee7d10e77dc56b9a9a221a2cbce3ccdd38e701ec4b1befc7606f6
+  https://github.com/goreleaser/goreleaser/releases/download/v2.0.0/goreleaser_Darwin_arm64.tar.gz: 5c367d56c24d1237c5bf4a1bcc36740fec756bccac8e9144864522ca3ebc34b4
+  https://github.com/goreleaser/goreleaser/releases/download/v2.0.0/goreleaser_Darwin_x86_64.tar.gz: 06594d0851e273c8a309c0943b41a544d481096c914ae3444a3dac762ef63969
+  https://github.com/goreleaser/goreleaser/releases/download/v2.0.0/goreleaser_Linux_x86_64.tar.gz: fb8f00ca5d4c923fb8c5587e304cd3a5c3cd6c8baac3344fbce7980d1263983e
+  https://github.com/goreleaser/goreleaser/releases/download/v2.0.0/goreleaser_Windows_x86_64.zip: 62fd801788693264da70d4601bf28efdcc6cc4fbd024ff5be876c5ef05680ca5
+  https://github.com/goreleaser/goreleaser/releases/download/v2.2.0/goreleaser_Darwin_arm64.tar.gz: 5b42ddb88c5644f7835949b45e898f4979e6d28abad909d8a584599a8b59e582
+  https://github.com/goreleaser/goreleaser/releases/download/v2.2.0/goreleaser_Darwin_x86_64.tar.gz: 5316b4f657214f4b95477ea3660523c3efbb78a7bea5d9f43c55972f08735741
+  https://github.com/goreleaser/goreleaser/releases/download/v2.2.0/goreleaser_Linux_x86_64.tar.gz: 1bf8909fa556599f29045b0b015ee75f6aec789e92f17343cb136e45499da98a
+  https://github.com/goreleaser/goreleaser/releases/download/v2.2.0/goreleaser_Windows_x86_64.zip: 5c63632f07e19190f09ac474eaf9f7f9c9e1db1c80efc4e4925acef7f1f5dfe2
+  https://github.com/goreleaser/goreleaser/releases/download/v2.7.0/goreleaser_Darwin_arm64.tar.gz: 0d7c9e3cbbbd23298cddb02518b42e942fee7e152bb46cbc40722e856f2c9c0d
+  https://github.com/goreleaser/goreleaser/releases/download/v2.7.0/goreleaser_Darwin_x86_64.tar.gz: 0f8c8aa5d13032dcda05bbbb0d09a48eb6b80015e5cb7a23d6dfa3fc44c81d66
+  https://github.com/goreleaser/goreleaser/releases/download/v2.7.0/goreleaser_Linux_x86_64.tar.gz: 075cb78e414664e50ee6900dd93ff1748c2d3fce19c9830f40186e99fc90ba0e
+  https://github.com/goreleaser/goreleaser/releases/download/v2.7.0/goreleaser_Windows_x86_64.zip: ceb6ea7136e4d5f166e1c3fa35cbb993e1fd50546a557c12731c90556633e5e1
   https://github.com/koalaman/shellcheck/releases/download/v0.10.0/shellcheck-v0.10.0.darwin.x86_64.tar.xz: ef27684f23279d112d8ad84e0823642e43f838993bbb8c0963db9b58a90464c2
   https://github.com/koalaman/shellcheck/releases/download/v0.10.0/shellcheck-v0.10.0.linux.x86_64.tar.xz: 6c881ab0698e4e6ea235245f22832860544f17ba386442fe7e9d629f8cbedf87
   https://github.com/koalaman/shellcheck/releases/download/v0.10.0/shellcheck-v0.10.0.zip: eb6cd53a54ea97a56540e9d296ce7e2fa68715aa507ff23574646c1e12b2e143
