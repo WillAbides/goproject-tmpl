@@ -13,14 +13,14 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
       - uses: WillAbides/setup-go-faster@v1
         id: setup-go
         with:
           go-version-file: go.mod
-      - uses: actions/cache@v4
+      - uses: actions/cache@v5
         with:
           path: |
             ${{ steps.setup-go.outputs.GOCACHE }}
@@ -33,7 +33,7 @@ jobs:
           git config --local user.email '${{ github.actor }}@users.noreply.github.com'
       - name: script/cibuild
         run: script/cibuild
-      - uses: WillAbides/release-train@v3.3.0
+      - uses: WillAbides/release-train@v3.8.5
         id: release-train
         with:
           # set create-release: true when ready to start releasing

@@ -1,10 +1,10 @@
 module github.com/willabides/goproject-tmpl
 
-go 1.24.0
+go 1.26.1
 
 require (
-	github.com/alecthomas/kong v1.8.1
-	github.com/stretchr/testify v1.8.1
+	github.com/alecthomas/kong v1.14.0
+	github.com/stretchr/testify v1.11.1
 )
 
 require (
