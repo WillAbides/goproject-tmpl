@@ -1,6 +1,6 @@
 module github.com/willabides/goproject-tmpl
 
-go 1.24.0
+go 1.26.1
 
 require (
 	github.com/alecthomas/kong v1.8.1
